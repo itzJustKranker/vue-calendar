@@ -20,11 +20,7 @@
           <b>SA</b>
         </div>
         <div class="dates">
-          <CalendarCell v-for="(date, index) in prevMonthDatesDisabled" :key="'prevMonthDisabled' + index" :cell-date="date" :disable="true"/>
-          
-          <CalendarCell v-for="(date, index) in currentMonthDates" :key="'currentMonth' + index" :cell-date="date"/>
-          
-          <CalendarCell v-for="(date, index) in nextMonthDatesDisabled" :key="'nextMonthDisabled' + index" :cell-date="date" :disable="true"/>
+          <CalendarWeek v-for="(week, index) in calendar" :key="'week' + index" :week="week" />
         </div>
       </article>
     </section>
@@ -32,19 +28,33 @@
 </template>
 
 <script>
-import CalendarCell from './CalendarCell';
+import moment from 'moment'
+import CalendarWeek from './CalendarWeek'
 
 export default {
   name: 'Calendar',
   components: {
-    CalendarCell
+    CalendarWeek
+  },
+  created () {
+    this.init();
   },
   data () {
     return {
-      prevMonthDatesDisabled: new Array(2).fill(0).map((e,i)=>i+1),
-      currentMonthDates: new Array(31).fill(0).map((e,i)=>i+1),
-      nextMonthDatesDisabled: new Array(9).fill(0).map((e,i)=>i+1)
+      startWeek: moment().startOf('month').week(),
+      endWeek: moment().endOf('month').week(),
+      calendar: [],
     }   
+  },
+  methods: {
+    init() {
+      for(var week = this.startWeek; week < this.endWeek; week++){
+        this.calendar.push({
+          week:week,
+          days:Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
+        });
+      }
+    }
   }
 }
 </script>
