@@ -1,6 +1,8 @@
 <template>
-  <div class="cell" :class="{ disable }">
-    <span class="cell-date">{{ cellDate }}</span>
+<div class="cell-wrapper" :class="{ disable }">
+  <div class="cell">
+      <span class="cell-date">{{ cellDate }}</span>
+    </div>
   </div>
 </template>
 
