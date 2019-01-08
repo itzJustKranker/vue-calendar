@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     init() {
-      for(var week = this.startWeek; week < this.endWeek; week++){
+      for(var week = this.startWeek; week < this.endWeek + 1; week++){
         this.calendar.push({
           week:week,
           days:Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
