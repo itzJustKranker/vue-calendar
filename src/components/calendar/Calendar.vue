@@ -1,8 +1,8 @@
 <template>
   <div>
-    <section class="mounth" id="january">
+    <section class="month" id="january">
       <header>
-        <h1>JANUARY 2013</h1>
+        <h1>{{ currentMonth }} {{ new Date().getFullYear() }}</h1>
         <nav role='padigation'>
           <span></span>
           <span></span>
@@ -20,20 +20,11 @@
           <b>SA</b>
         </div>
         <div class="dates">
-          <span class="disable">30</span>
-          <span class="disable">31</span>
+          <CalendarCell v-for="(date, index) in prevMonthDatesDisabled" :key="'prevMonthDisabled' + index" :cell-date="date" :disable="true"/>
           
-          <CalendarCell v-for="(date, index) in 31" :key="index" :cell-date="date"/>
+          <CalendarCell v-for="(date, index) in currentMonthDates" :key="'currentMonth' + index" :cell-date="date"/>
           
-          <span class="disable">1</span>
-          <span class="disable">2</span>
-          <span class="disable">3</span>
-          <span class="disable">4</span>
-          <span class="disable">5</span>
-          <span class="disable">6</span>
-          <span class="disable">7</span>
-          <span class="disable">8</span>
-          <span class="disable">9</span>
+          <CalendarCell v-for="(date, index) in nextMonthDatesDisabled" :key="'nextMonthDisabled' + index" :cell-date="date" :disable="true"/>
         </div>
       </article>
     </section>
@@ -47,6 +38,14 @@ export default {
   name: 'Calendar',
   components: {
     CalendarCell
+  },
+  data () {
+    return {
+      currentMonth: new Date().toLocaleString('en-us', { month: 'long'}),
+      prevMonthDatesDisabled: new Array(2).fill(0).map((e,i)=>i+1),
+      currentMonthDates: new Array(31).fill(0).map((e,i)=>i+1),
+      nextMonthDatesDisabled: new Array(9).fill(0).map((e,i)=>i+1)
+    }   
   }
 }
 </script>
