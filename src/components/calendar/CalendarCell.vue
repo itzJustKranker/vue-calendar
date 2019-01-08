@@ -1,9 +1,9 @@
 <template>
 <div class="cell-wrapper" :class="{ disable }">
   <div class="cell">
-      <span class="cell-date">{{ day.format('DD') }}</span>
-    </div>
+    <span class="cell-date">{{ day.format('DD') }}</span>
   </div>
+</div>
 </template>
 
 <script>
