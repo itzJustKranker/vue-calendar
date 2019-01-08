@@ -1,0 +1,55 @@
+@import './cells.scss';
+
+section {
+    .month {
+        overflow: hidden;
+        display: block;
+        float: left;
+        width: 100%; height: auto;
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0,0,0,.25);
+        border-radius: 5px;
+    }
+
+    header {
+        position: relative;
+        display: block;
+        height: 80px;
+        background: #e9eaf0;
+        box-shadow: inset 0 -1px 0 rgba(0,0,0,.06);
+        
+        h1 {
+            margin-left: 30px;
+            line-height: 80px;
+        }
+
+        nav {
+            overflow: hidden;
+            position: absolute;
+            display: block;
+            right: 30px; top: 30px;
+
+            span {
+                display: block;
+                float: left;
+                width: 11px; height: 20px;
+                margin-left: 30px;
+                cursor: pointer;
+
+                :first-of-type {
+                    background-position: -77px -4px;
+                }
+                :first-of-type:hover {
+                    background-position: -106px -4px;
+                }
+                :last-of-type {
+                    background-position: -90px -4px;
+                }
+                :last-of-type:hover {
+                    background-position: -119px -4px;
+                }
+            }
+        }
+
+    }
+}
