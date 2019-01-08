@@ -56,7 +56,6 @@ header {
     width: 11px; height: 20px;
     margin-left: 30px;
     cursor: pointer;
-    background: url('http://ysfu.net/sprite.png') no-repeat;
   }
     header nav span:first-of-type {
       background-position: -77px -4px;
