@@ -2,7 +2,7 @@
   <div>
     <section class="month" id="january">
       <header>
-        <h1>{{ currentMonth }} {{ new Date().getFullYear() }}</h1>
+        <h1>{{ new Date().toLocaleString('en-us', { month: 'long'}) }} {{ new Date().getFullYear() }}</h1>
         <nav role='padigation'>
           <span></span>
           <span></span>
@@ -41,7 +41,6 @@ export default {
   },
   data () {
     return {
-      currentMonth: new Date().toLocaleString('en-us', { month: 'long'}),
       prevMonthDatesDisabled: new Array(2).fill(0).map((e,i)=>i+1),
       currentMonthDates: new Array(31).fill(0).map((e,i)=>i+1),
       nextMonthDatesDisabled: new Array(9).fill(0).map((e,i)=>i+1)
