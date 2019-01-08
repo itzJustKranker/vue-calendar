@@ -1,10 +1,12 @@
 <template>
-  <span>{{ cellDate }}</span>
+  <div class="cell" :class="{ disable }">
+    <span class="cell-date">{{ cellDate }}</span>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'CalendarCell',
-  props: ['cellDate']
+  props: ['disable', 'cellDate']
 }
 </script>
