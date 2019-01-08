@@ -1,6 +1,13 @@
 <template>
   <div>
-    <CalendarCell v-for="(day, index) in days" :key="'cell' + index" :day="day" :disable="isDisabled(day)"/>
+    <CalendarCell 
+      v-for="(day, index) in days" 
+      :key="'cell' + index" 
+      :day="day"
+      :isSelected="selected[index]"
+      :disable="isDisabled(day)"
+      v-on:click="setSelected(index)"
+      />
   </div>
 </template>
 
@@ -16,12 +23,16 @@ export default {
     },
     data () {
       return {
-        days: this.week.days
+        days: this.week.days,
+        selected: new Array(this.week.days.length).fill(false)
       }
     },
     methods: {
       isDisabled (day) {
         return (moment().month() !== day.month())
+      },
+      setSelected (i) {
+        this.selected[i] = true
       }
     }
 }
