@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="month" id="january">
+    <section class="month">
       <header>
         <h1>{{ new Date().toLocaleString('en-us', { month: 'long'}) }} {{ new Date().getFullYear() }}</h1>
         <nav role='padigation'>
